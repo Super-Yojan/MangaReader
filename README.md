@@ -5,12 +5,13 @@ It works by allowing you to add your faviroute manga reading site and replace th
 by a {}.
 
 
+![](example.gif)
 
 
 # Installation
 
 ```
-git clone
+git clone https://gitlab.com/Super-Yojan/mangareader.git
 ```
 
 ```
