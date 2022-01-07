@@ -1,17 +1,22 @@
+#!/bin/python3
+
+
 import requests
 import argparse
 from bs4 import BeautifulSoup
 import subprocess
 import json
 
-FILE_NAME = "manga_hst.json"
+FILE_NAME = "/tmp/manga_hst.json"
 
 
 def append_history(line):
+    print(line)
     with open(FILE_NAME, 'w') as file:
         file.write(line)
 
 def get_input():
+    global history
     manga = input("Enter the name of the manga: ").replace(" " ,"-")
     url = input("Enter the url(https://some-url/some/endpoint/{chapternumber}): ")
     chapter = input("Enter the chapter number: ")
@@ -25,9 +30,9 @@ def get_input():
 ######################################
 #     Creating History File          #
 ######################################
-ret = subprocess.run("ls", capture_output=True)
+ret = subprocess.run("ls /tmp", capture_output=True, shell=True)
 
-if FILE_NAME not in ret.stdout.decode():
+if 'manga_hst.json' not in ret.stdout.decode():
     f = open(FILE_NAME, 'w')
     f.write("[]")
     f.close()
