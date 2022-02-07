@@ -6,12 +6,14 @@ import argparse
 from bs4 import BeautifulSoup
 import subprocess
 import json
+import os
 
-FILE_NAME = "/tmp/manga_hst.json"
+HOME = os.environ['HOME']
+
+FILE_NAME = HOME+"/.cache/manga_hst.json"
 
 
 def append_history(line):
-    print(line)
     with open(FILE_NAME, 'w') as file:
         file.write(line)
 
@@ -30,7 +32,7 @@ def get_input():
 ######################################
 #     Creating History File          #
 ######################################
-ret = subprocess.run("ls /tmp", capture_output=True, shell=True)
+ret = subprocess.run('ls '+HOME+"/.cache/", capture_output=True, shell=True)
 
 if 'manga_hst.json' not in ret.stdout.decode():
     f = open(FILE_NAME, 'w')
