@@ -102,7 +102,7 @@ def get_chapter(index):
         else:
             quit()
     subprocess.run("pkill feh", shell=True)
-    subprocess.Popen("feh -q --reload int --title "+manga['name']+" ".join(chapterList),shell=True)
+    subprocess.Popen("feh -q --reload int  -Z -. "+manga['name']+" ".join(chapterList),shell=True)
     print("##################################################################")
     next = input("Next? [y/n]: ")
     if 'y' in next.lower():
